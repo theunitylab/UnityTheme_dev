@@ -1,19 +1,39 @@
 /*!
 Section 4: Header
 */
-input[type=search],input[type=search]:focus {
-    max-width: 260px;
-    width: 100%;
-    height: 2rem;
-    margin: .5rem 0 0 0;
-    border-radius: 20px;
-    padding: .25rem .25rem .25rem 2.2rem;
-    font-size: .75rem;
-    font-weight: 700;
-    background-image: url(/wp-content/themes/lorainccc/images/icons/icon-search.png);
-    background-repeat: no-repeat;
-    background-position: .75rem .45rem
+header#masthead
+{
+    padding: 0;
+    min-height: 283px;
+    background-image: url(/wp-content/themes/UnityTheme/images/unity-headerbg.png);
 }
+h1.site-title{
+        margin-top: 1.25rem;
+}
+h1.site-title a{
+        color: #fff;
+            font-size: 50px;
+}
+.columns.header-menus{
+    padding-top: 4rem;
+        padding-left: 0;
+    padding-right: 0;
+}
+.columns.social-icons{
+    padding-top: 0.9rem;
+    padding-left: 1.8rem;
+}
+@media screen and (min-width: 74.9375em) {
+    padding: 0;
+    min-height: 283px;
+    background-image: url(/wp-content/themes/UnityTheme/images/unity-headerbg.png);
+}
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+    padding: 0;
+    min-height: 283px;
+    background-image: url(/wp-content/themes/UnityTheme/images/unity-headerbg-large.png);
+}
+
 
 a.skip-link.screen-reader-text {
     position: absolute;

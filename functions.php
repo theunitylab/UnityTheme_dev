@@ -99,12 +99,24 @@ function the_unity_lab_theme_widgets_init() {
 add_action( 'widgets_init', 'the_unity_lab_theme_widgets_init' );
 
 /**
+ * Enqueue google fonts.
+ */
+function add_google_fonts() {
+wp_enqueue_style( 'quicksand-google-fonts', 'https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic', false );
+wp_enqueue_style( 'Lato-google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700', false ); 	
+	
+}
+
+add_action( 'wp_enqueue_scripts', 'add_google_fonts' );
+
+
+/**
  * Enqueue scripts and styles.
  */
  function unitylab_foundation_scripts() {
 
  // Add Genericons, used in the main stylesheet.
-	 wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+	//  wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
 
 	 wp_enqueue_style( 'foundation-app',  get_template_directory_uri() . '/foundation/css/app.css' );
 		wp_enqueue_style( 'foundation-normalize', get_template_directory_uri() . '/foundation/css/normalize.css' );
@@ -163,3 +175,60 @@ require get_stylesheet_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_stylesheet_directory() . '/inc/jetpack.php';
+
+
+/* Menu Functions */
+
+class lc_top_bar_menu_walker extends Walker_Nav_Menu
+{
+	/*
+	 * Add vertical menu class and submenu data attribute to sub menus
+	 */
+
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class=\"vertical menu\" data-submenu>\n";
+	}
+}
+
+//Optional fallback
+function lc_topbar_menu_fallback($args)
+{
+	/*
+	 * Instantiate new Page Walker class instead of applying a filter to the
+	 * "wp_page_menu" function in the event there are multiple active menus in theme.
+	 */
+
+	$walker_page = new Walker_Page();
+	$fallback = $walker_page->walk(get_pages(), 0);
+	$fallback = str_replace("<ul class='children'>", '<ul class="children submenu menu vertical" data-submenu>', $fallback);
+
+	echo '<ul class="dropdown menu" data-dropdown-menu">'.$fallback.'</ul>';
+}
+
+class lc_drill_menu_walker extends Walker_Nav_Menu
+{
+	/*
+	 * Add vertical menu class
+	 */
+
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class=\"vertical menu\">\n";
+	}
+}
+
+function lc_drill_menu_fallback($args)
+{
+	/*
+	 * Instantiate new Page Walker class instead of applying a filter to the
+	 * "wp_page_menu" function in the event there are multiple active menus in theme.
+	 */
+
+	$walker_page = new Walker_Page();
+	$fallback = $walker_page->walk(get_pages(), 0);
+	$fallback = str_replace("children", "children vertical menu", $fallback);
+	echo '<ul class="vertical menu" data-drilldown="">'.$fallback.'</ul>';
+}
+
+/* End Menu Functions */

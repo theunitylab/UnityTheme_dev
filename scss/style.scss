@@ -22,19 +22,14 @@ Section 6: Footer
 @import 'navigation.scss';
 @import 'footer.scss';
 
-/*! Ryan's Updated Menu Styling */
-@media screen and (min-width: 40em) {
-    aside.columns {
-        padding-right: .9375rem !important;
-        padding-left: .9375rem !important;
-    }
+div.columns.nopadding {
+    padding: 0;
 }
-
+/*! Ryan's Updated Menu Styling */
 .breadcrumb-container {
     padding: 2rem .9375rem !important;
     font-size: .8125rem !important;
 }
-
 .sidebar-widget {
     padding-top: 0px !important;
     margin: 1rem 0 3rem 0 !important;

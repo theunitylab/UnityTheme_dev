@@ -4,7 +4,7 @@ Section 3: Body
 
 body {
     font-size: $body-font-size;
-    font-family: $body-font-family;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     line-height: 1.5;
     color: #606060;
@@ -13,8 +13,18 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6,h7 {
-    font-family: $header-font-family;
+     font-family: 'Lato', sans-serif;
+    font-weight: bold;
 }
+
+div.columns.maincontent{
+    min-height: 250px;
+}
+div.columns.maincontent h1, div.columns.maincontent h3{
+    text-align: center;
+}
+div.columns.maincontent h1{color: #000000;font-size: 4.1875rem;}
+div.columns.maincontent h3{font-size: 3.1875rem;}
 
 img.alignright { float: right; margin: 0 0 1em 1em; }
 img.alignleft { float: left; margin: 0 1em 1em 0; }
@@ -28,3 +38,5 @@ img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
    max-width: 100%;
    height: auto;
 }
+footer.entry-footer, footer.comment-meta{background-image: none;}
+footer.entry-footer a, footer.comment-meta a{text-decoration: underline; color:#0055A5;}
